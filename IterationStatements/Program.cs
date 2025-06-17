@@ -65,12 +65,21 @@
 
         public static bool IsPositive(int posNegNumber)
         {
-            if (posNegNumber >= -1000 && posNegNumber <= 1000)
+            if (posNegNumber >= -1000 && posNegNumber < 0)
             {
+                Console.WriteLine("This number is negative!");
                 return true;
             }
+            
+            else if (posNegNumber <= 1000 && posNegNumber >= 0)
+            {
+                Console.WriteLine("This number is positive!");
+                return true;
+            }
+            
             else
             {
+                Console.WriteLine("This number is not in range!");
                 return false;
             }
         }
@@ -82,12 +91,19 @@
 
         public static bool CanVote(int voteAge)
         {
-            if (voteAge > 17)
+            if (voteAge > 17 && voteAge <= 120)
             {
+                Console.WriteLine("You are old enough to vote!");
+                return true;
+            }
+            else if (voteAge <= 17 && voteAge > 0)
+            {
+                Console.WriteLine("Sorry! You are not old enough to vote yet!");
                 return true;
             }
             else
             {
+                Console.WriteLine("Please enter a valid age!");
                 return false;
             }
         }
@@ -101,10 +117,12 @@
         {
             if (rangeNum >= -10 && rangeNum <= 10)
             {
+                Console.WriteLine("This number is in the range of -10 to +10.");
                 return true;
             }
             else
             {
+                Console.WriteLine("This number is not in the range of -10 to +10.");
                 return false;
             }
         }
@@ -167,30 +185,13 @@
                 int.TryParse(userPosNegInput, out int posNegNumber);
 
                 bool isPos = IsPositive(posNegNumber);
-                if (isPos)
-                {
-                    Console.WriteLine("This number is positive!");
-                }
-                else
-                {
-                    Console.WriteLine("This number is negative!");
-                }
 
 
-                Console.WriteLine(
-                    "Please enter your age and I will determine whether you are old enough to vote or not!");
+                Console.WriteLine("Please enter your age and I will determine whether you are old enough to vote or not!");
                 string userAgeInput = Console.ReadLine();
                 int.TryParse(userAgeInput, out int voteAge);
 
-                bool isOldEnough = IsEven(voteAge);
-                if (isOldEnough)
-                {
-                    Console.WriteLine("You are old enough to vote!");
-                }
-                else
-                {
-                    Console.WriteLine("Sorry! You are not old enough to vote yet!");
-                }
+                bool isOldEnough = CanVote(voteAge);
 
 
                 Console.WriteLine("Please enter a number:");
@@ -198,14 +199,6 @@
                 int.TryParse(rangeUserInput, out int rangeNum);
 
                 bool inRange = IsInRange(rangeNum);
-                if (inRange)
-                {
-                    Console.WriteLine("This number is in the range of -10 to +10.");
-                }
-                else
-                {
-                    Console.WriteLine("This number is not in the range of -10 to +10.");
-                }
 
 
 
