@@ -33,11 +33,13 @@
         {
             if (userInput1 == userInput2)
             {
+                Console.WriteLine("These numbers are equal!");
                 return true;
 
             }
             else
             {
+                Console.WriteLine("These numbers are not equal!");
                 return false;
             }
 
@@ -65,21 +67,13 @@
 
         public static bool IsPositive(int posNegNumber)
         {
-            if (posNegNumber >= -1000 && posNegNumber < 0)
-            {
-                Console.WriteLine("This number is negative!");
-                return true;
-            }
-            
-            else if (posNegNumber <= 1000 && posNegNumber >= 0)
+            if (posNegNumber >= 0)
             {
                 Console.WriteLine("This number is positive!");
                 return true;
-            }
-            
-            else
+            }else
             {
-                Console.WriteLine("This number is not in range!");
+                Console.WriteLine("This number is negative!");
                 return false;
             }
         }
@@ -91,19 +85,13 @@
 
         public static bool CanVote(int voteAge)
         {
-            if (voteAge > 17 && voteAge <= 120)
+            if (voteAge >= 18)
             {
                 Console.WriteLine("You are old enough to vote!");
                 return true;
-            }
-            else if (voteAge <= 17 && voteAge > 0)
+            }else
             {
-                Console.WriteLine("Sorry! You are not old enough to vote yet!");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("Please enter a valid age!");
+                Console.WriteLine("You are not old enough to vote yet!");
                 return false;
             }
         }
@@ -151,19 +139,13 @@
                 PrintEveryThirdNumber();
 
 
-                Console.WriteLine("Choose 2 numbers that are equal to each other:");
+                Console.WriteLine("Choose 2 numbers that are equal to each other. Give me your first number:");
                 string userInput1 = Console.ReadLine();
+                Console.WriteLine("Now input your second number:");
                 string userInput2 = Console.ReadLine();
+                
 
-                bool isValid = AreNumbersEqual(userInput1, userInput2);
-                if (isValid)
-                {
-                    Console.WriteLine("These numbers are equal!");
-                }
-                else
-                {
-                    Console.WriteLine("These numbers are not equal!");
-                }
+                AreNumbersEqual(userInput1, userInput2);
 
 
                 Console.WriteLine("Pick a number and I will tell you if it is even or odd:");
@@ -180,27 +162,26 @@
                     Console.WriteLine("This number is odd!");
                 }
 
-                Console.WriteLine("Please enter a number between -1000 and 1000:");
+                Console.WriteLine("Please enter a positive or negative number:");
                 string userPosNegInput = Console.ReadLine();
                 int.TryParse(userPosNegInput, out int posNegNumber);
 
-                bool isPos = IsPositive(posNegNumber);
+                IsPositive(posNegNumber);
 
 
                 Console.WriteLine("Please enter your age and I will determine whether you are old enough to vote or not!");
                 string userAgeInput = Console.ReadLine();
                 int.TryParse(userAgeInput, out int voteAge);
 
-                bool isOldEnough = CanVote(voteAge);
+                CanVote(voteAge);
 
 
-                Console.WriteLine("Please enter a number:");
+                Console.WriteLine("Please enter a number between -10 and 10:");
                 string rangeUserInput = Console.ReadLine();
                 int.TryParse(rangeUserInput, out int rangeNum);
 
-                bool inRange = IsInRange(rangeNum);
-
-
+                IsInRange(rangeNum);
+                
 
                 Console.WriteLine("Please enter a number and I will display that number's multiplication table 1 through 12!");
                 string mulUserInput = Console.ReadLine();
